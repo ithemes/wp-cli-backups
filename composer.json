@@ -1,0 +1,60 @@
+{
+  "name": "solidwp/wp-cli-backups",
+  "type": "wp-cli-package",
+  "description": "",
+  "homepage": "https://github.com/solidwp/backups",
+  "license": "MIT",
+  "authors": [],
+  "require": {
+    "wp-cli/wp-cli": "^2.11",
+    "wp-cli/wp-config-transformer": "^1.4",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "wp-cli/wp-cli-tests": "^4.3.9"
+  },
+  "config": {
+    "process-timeout": 7200,
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.x-dev"
+    },
+    "bundled": false,
+    "commands": [
+      "solid backups merge-wp-config"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "SolidWP\\WP_CLI\\Backups\\": "src/"
+    },
+    "files": [
+      "backups-command.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "behat": "run-behat-tests",
+    "behat-rerun": "rerun-behat-tests",
+    "lint": "run-linter-tests",
+    "phpcs": "run-phpcs-tests",
+    "phpcbf": "run-phpcbf-cleanup",
+    "phpunit": "run-php-unit-tests",
+    "prepare-tests": "install-package-tests",
+    "test": [
+      "@lint",
+      "@phpcs",
+      "@phpunit",
+      "@behat"
+    ]
+  },
+  "support": {
+    "issues": "https://github.com/solidwp/backups/issues"
+  }
+}
