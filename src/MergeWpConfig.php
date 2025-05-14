@@ -82,13 +82,10 @@ class MergeWpConfig extends WP_CLI_Command {
 			$value = var_export( $entry['value'], true );
 
 			try {
-				if ( ! $transformer->update( $entry['type'], $entry['name'], $value, $options ) ) {
-					throw new \Exception( 'Failed to save config value.' );
-				}
-
+				$transformer->update( $entry['type'], $entry['name'], $value, $options );
 				$saved[] = $entry['name'];
 			} catch ( \Exception $e ) {
-				WP_CLI::warning( sprintf( 'Failed to save config value "%s (%s)": %s.', $entry['name'], $entry['type'], $e->getMessage() ) );
+				WP_CLI::warning( sprintf( 'Failed to update config value "%s (%s)": %s.', $entry['name'], $entry['type'], $e->getMessage() ) );
 				$failed[] = $entry['name'];
 			}
 		}
