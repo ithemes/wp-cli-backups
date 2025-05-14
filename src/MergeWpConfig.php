@@ -30,6 +30,7 @@ class MergeWpConfig extends WP_CLI_Command {
 	 * : Only output keys that failed to save.
 	 *
 	 * ## EXAMPLES
+	 *
 	 *     # Contents of to-import.json
 	 *     [
 	 *      {
